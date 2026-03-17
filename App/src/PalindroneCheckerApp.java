@@ -1,4 +1,6 @@
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class PalindroneCheckerApp {
 
@@ -6,28 +8,34 @@ public class PalindroneCheckerApp {
     public static void main(String[] args) {
 
         // Input string
-        String input = "madam";
+        String input = "radar";
 
-        // Create a stack to store characters
+        // Create Stack and Queue
         Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
 
-        // Push all characters into the stack
+        // Insert characters into both Stack and Queue
         for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+            char ch = input.charAt(i);
+            stack.push(ch);      // LIFO
+            queue.add(ch);       // FIFO
         }
 
-        // Build reversed string using pop operation
-        String reversed = "";
-        while (!stack.isEmpty()) {
-            reversed = reversed + stack.pop();
+        // Flag to track palindrome
+        boolean isPalindrome = true;
+
+        // Compare elements using pop (stack) and dequeue (queue)
+        while (!stack.isEmpty() && !queue.isEmpty()) {
+            if (stack.pop() != queue.remove()) {
+                isPalindrome = false;
+                break;
+            }
         }
 
-        // Display original and reversed strings
-        System.out.println("Original String : " + input);
-        System.out.println("Reversed String : " + reversed);
+        // Display result
+        System.out.println("Input String : " + input);
 
-        // Check palindrome
-        if (input.equals(reversed)) {
+        if (isPalindrome) {
             System.out.println("Result: It is a Palindrome.");
         } else {
             System.out.println("Result: It is NOT a Palindrome.");
