@@ -1,5 +1,4 @@
-import java.util.Stack;
-import java.util.Queue;
+import java.util.Deque;
 import java.util.LinkedList;
 
 public class PalindroneCheckerApp {
@@ -8,25 +7,25 @@ public class PalindroneCheckerApp {
     public static void main(String[] args) {
 
         // Input string
-        String input = "radar";
+        String input = "level";
 
-        // Create Stack and Queue
-        Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
+        // Create Deque
+        Deque<Character> deque = new LinkedList<>();
 
-        // Insert characters into both Stack and Queue
+        // Insert characters into deque
         for (int i = 0; i < input.length(); i++) {
-            char ch = input.charAt(i);
-            stack.push(ch);      // LIFO
-            queue.add(ch);       // FIFO
+            deque.addLast(input.charAt(i));
         }
 
         // Flag to track palindrome
         boolean isPalindrome = true;
 
-        // Compare elements using pop (stack) and dequeue (queue)
-        while (!stack.isEmpty() && !queue.isEmpty()) {
-            if (stack.pop() != queue.remove()) {
+        // Compare front and rear elements
+        while (deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+
+            if (front != rear) {
                 isPalindrome = false;
                 break;
             }
