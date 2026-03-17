@@ -1,19 +1,35 @@
 public class PalindroneCheckerApp {
 
+    // Main method - Entry point
     public static void main(String[] args) {
 
-        String original = "racecar";
+        // Input string
+        String input = "level";
 
-        String reversed = "";
+        // Convert string to character array
+        char[] charArray = input.toCharArray();
 
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);
+        // Two-pointer variables
+        int start = 0;
+        int end = charArray.length - 1;
+
+        // Flag to track palindrome status
+        boolean isPalindrome = true;
+
+        // Compare characters using two-pointer technique
+        while (start < end) {
+            if (charArray[start] != charArray[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        System.out.println("Original String : " + original);
-        System.out.println("Reversed String : " + reversed);
+        // Display result
+        System.out.println("Input String : " + input);
 
-        if (original.equals(reversed)) {
+        if (isPalindrome) {
             System.out.println("Result: It is a Palindrome.");
         } else {
             System.out.println("Result: It is NOT a Palindrome.");
