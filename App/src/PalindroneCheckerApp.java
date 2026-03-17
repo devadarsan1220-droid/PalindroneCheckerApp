@@ -1,35 +1,33 @@
+import java.util.Stack;
+
 public class PalindroneCheckerApp {
 
     // Main method - Entry point
     public static void main(String[] args) {
 
         // Input string
-        String input = "level";
+        String input = "madam";
 
-        // Convert string to character array
-        char[] charArray = input.toCharArray();
+        // Create a stack to store characters
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer variables
-        int start = 0;
-        int end = charArray.length - 1;
-
-        // Flag to track palindrome status
-        boolean isPalindrome = true;
-
-        // Compare characters using two-pointer technique
-        while (start < end) {
-            if (charArray[start] != charArray[end]) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
+        // Push all characters into the stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
         }
 
-        // Display result
-        System.out.println("Input String : " + input);
+        // Build reversed string using pop operation
+        String reversed = "";
+        while (!stack.isEmpty()) {
+            reversed = reversed + stack.pop();
+        }
 
-        if (isPalindrome) {
+        // Display original and reversed strings
+        System.out.println("Original String : " + input);
+        System.out.println("Reversed String : " + reversed);
+
+        // Check palindrome
+        if (input.equals(reversed)) {
             System.out.println("Result: It is a Palindrome.");
         } else {
             System.out.println("Result: It is NOT a Palindrome.");
