@@ -1,23 +1,25 @@
 public class PalindroneCheckerApp {
 
-
     public static void main(String[] args) {
 
-        String word = "madam";
+        String original = "racecar";
 
         String reversed = "";
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed = reversed + word.charAt(i);
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        if (word.equals(reversed)) {
-            System.out.println("The word \"" + word + "\" is a Palindrome.");
+        System.out.println("Original String : " + original);
+        System.out.println("Reversed String : " + reversed);
+
+        if (original.equals(reversed)) {
+            System.out.println("Result: It is a Palindrome.");
         } else {
-            System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("Result: It is NOT a Palindrome.");
         }
 
         // End message
-        System.out.println("Program executed successfully.");
+        System.out.println("Program completed.");
     }
 }
