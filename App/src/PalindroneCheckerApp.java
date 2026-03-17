@@ -3,14 +3,21 @@ public class PalindroneCheckerApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=====================================");
-        System.out.println("   Welcome to Palindrome Checker App ");
-        System.out.println("=====================================");
+        String word = "madam";
 
-        System.out.println("Application Name : Palindrome Checker");
-        System.out.println("Version          : 1.0");
+        String reversed = "";
 
-        System.out.println("Application started successfully.");
-        System.out.println("Ready for palindrome validation...");
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed = reversed + word.charAt(i);
+        }
+
+        if (word.equals(reversed)) {
+            System.out.println("The word \"" + word + "\" is a Palindrome.");
+        } else {
+            System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
+        }
+
+        // End message
+        System.out.println("Program executed successfully.");
     }
 }
